@@ -1,0 +1,60 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: lightblue;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 620px;
+  background: lightcyan;
+  border-radius: 5px;
+  & li {
+    list-style: none;
+    margin-bottom: 15px;
+    
+    & input {
+      margin-left: 15px;
+      width: 30%;
+    }
+    
+    & select {
+      max-width: 350px;
+      width: 100%;
+      margin-left: 15px;
+    }
+  }
+
+  .h1 {
+    text-align: center;
+  }
+
+  .buttons_container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 25px 0;
+    .button {
+      width: 150px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid green;
+      font-size: 16px;
+
+      &:hover {
+        background: lightseagreen;
+      }
+      &:active {
+        transform: translate(0.5px, 0.5px);
+        background: lightskyblue;
+      }
+    }
+  }
+}
