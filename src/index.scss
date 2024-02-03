@@ -17,6 +17,7 @@ html, body {
   width: 620px;
   background: lightcyan;
   border-radius: 5px;
+  margin-bottom: 50px;
   & li {
     list-style: none;
     margin-bottom: 15px;
@@ -41,20 +42,61 @@ html, body {
     display: flex;
     justify-content: space-evenly;
     margin: 25px 0;
-    .button {
-      width: 150px;
-      height: 30px;
-      border-radius: 5px;
-      border: 1px solid green;
-      font-size: 16px;
+  }
 
-      &:hover {
-        background: lightseagreen;
+  .button {
+    width: 150px;
+    min-height: 35px;
+    border-radius: 5px;
+    border: 1px solid green;
+    font-size: 16px;
+
+    &:hover {
+      background: lightseagreen;
+    }
+    &:active {
+      transform: translate(0.5px, 0.5px);
+      background: lightskyblue;
+    }
+  }
+
+  &.quiz_screen {
+    display: flex;
+    align-items: center;
+
+    .info_block {
+      max-width: 80%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .question_block {
+      & p {
+        margin: 16px 35px;
+        font-size: 20px;
+        font-weight: 600;
       }
-      &:active {
-        transform: translate(0.5px, 0.5px);
-        background: lightskyblue;
+
+      .answer_btns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        & button {
+          width: 240px;
+          min-height: 50px;
+          font-size: 18px;
+        }
       }
+    }
+
+    .button {
+      margin-bottom: 25px;
     }
   }
 }
+
