@@ -1,13 +1,27 @@
-import { ButtonsContainer } from './components/ButtonsContainer'
-import QuizOptions from './components/QuizOptions'
+import { createContext } from 'react'
+import MainScreen from './components/MainScreen'
+import QuizScreen from './components/QuizScreen'
+
+export const MockDataContext = createContext()
 
 function App() {
+  let mockData = [
+    {
+      category: 'Celebrities',
+      correct_answer: 'Abandoned Buildings and Dead Malls',
+      difficulty: 'easy',
+      incorrect_answers: ['Historic Landmarks', 'Action Films', 'Documentaries'],
+      question: 'What does film maker Dan Bell typically focus his films on?',
+      type: 'multiple'
+    }
+  ]
   return (
-    <div className="container">
-      <h1 className="h1">Quiz Machine</h1>
-      <QuizOptions />
-      <ButtonsContainer />
-    </div>
+    <>
+      <MainScreen />
+      <MockDataContext.Provider value={mockData}>
+        <QuizScreen />
+      </MockDataContext.Provider>
+    </>
   )
 }
 

@@ -30,7 +30,7 @@ export default function QuizOptions() {
       id: 'quiz_time',
       inputType: 'select',
       optionType: 'Choose quiz time:',
-      values: ['1m', '2m', '3m']
+      values: ['1m', '2m', '5m']
     }
   ]
   return (

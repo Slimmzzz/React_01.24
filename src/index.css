@@ -17,6 +17,7 @@ html, body {
   width: 620px;
   background: lightcyan;
   border-radius: 5px;
+  margin-bottom: 50px;
 }
 .container li {
   list-style: none;
@@ -39,17 +40,49 @@ html, body {
   justify-content: space-evenly;
   margin: 25px 0;
 }
-.container .buttons_container .button {
+.container .button {
   width: 150px;
-  height: 30px;
+  min-height: 35px;
   border-radius: 5px;
   border: 1px solid green;
   font-size: 16px;
 }
-.container .buttons_container .button:hover {
+.container .button:hover {
   background: lightseagreen;
 }
-.container .buttons_container .button:active {
+.container .button:active {
   transform: translate(0.5px, 0.5px);
   background: lightskyblue;
+}
+.container.quiz_screen {
+  display: flex;
+  align-items: center;
+}
+.container.quiz_screen .info_block {
+  max-width: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+.container.quiz_screen .question_block p {
+  margin: 16px 35px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.container.quiz_screen .question_block .answer_btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+.container.quiz_screen .question_block .answer_btns button {
+  width: 240px;
+  min-height: 50px;
+  font-size: 18px;
+}
+.container.quiz_screen .button {
+  margin-bottom: 25px;
 }/*# sourceMappingURL=index.css.map */
