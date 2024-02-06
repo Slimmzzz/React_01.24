@@ -1,6 +1,20 @@
+import { useState } from 'react';
 import OptionSelect from './OptionSelect'
+import ButtonsContainer from './ButtonsContainer';
 
 export default function QuizOptions() {
+  const [option, SetOption] = useState({
+    questions_quantity: 5,
+    questions_category: 'One',
+    questions_difficulty: 'Easy',
+    questions_type: 'Multiple',
+    quiz_time: '1m'
+  });
+
+  function onChangeHandler(e) {
+    SetOption(option, option[e.target.id] = e.target.value)
+  }
+
   let inputsOptions = [
     {
       id: 'questions_quantity',
@@ -12,19 +26,19 @@ export default function QuizOptions() {
       id: 'questions_category',
       inputType: 'select',
       optionType: 'Select questions category:',
-      values: ['One']
+      values: ['One', 'History', 'Politics']
     },
     {
       id: 'questions_difficulty',
       inputType: 'select',
       optionType: 'Select difficulty:',
-      values: ['Easy']
+      values: ['Easy', 'Medium', 'Hard']
     },
     {
       id: 'questions_type',
       inputType: 'select',
       optionType: 'Select answers type:',
-      values: ['Multiple']
+      values: ['Multiple', 'True/false']
     },
     {
       id: 'quiz_time',
@@ -33,11 +47,16 @@ export default function QuizOptions() {
       values: ['1m', '2m', '5m']
     }
   ]
+
   return (
-    <ul>
-      {inputsOptions.map((optionsObj) => {
-        return <OptionSelect key={optionsObj.id} {...optionsObj} />
-      })}
-    </ul>
+    <>
+      <ul>
+        {inputsOptions.map((optionsObj) => {
+          return <OptionSelect key={optionsObj.id} onChange={onChangeHandler} {...optionsObj} />
+        })}
+      </ul>
+      
+      <ButtonsContainer />
+    </>
   )
 }
