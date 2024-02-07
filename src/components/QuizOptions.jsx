@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import OptionSelect from './OptionSelect'
-import ButtonsContainer from './ButtonsContainer';
+import ButtonsContainer from './ButtonsContainer'
 
 export default function QuizOptions() {
-  const [option, SetOption] = useState({
+  const [optionsList, SetOptionsList] = useState({
     questions_quantity: 5,
     questions_category: 'One',
     questions_difficulty: 'Easy',
     questions_type: 'Multiple',
     quiz_time: '1m'
-  });
+  })
 
   function onChangeHandler(e) {
-    SetOption(option, option[e.target.id] = e.target.value)
+    SetOptionsList(optionsList, (optionsList[e.target.id] = e.target.value))
   }
 
   let inputsOptions = [
     {
       id: 'questions_quantity',
       inputType: 'input',
-      optionType: 'Number of questions:',
+      optionType: 'Number of questions(from 5 to 15):',
       values: [5, 15]
     },
     {
@@ -55,7 +55,7 @@ export default function QuizOptions() {
           return <OptionSelect key={optionsObj.id} onChange={onChangeHandler} {...optionsObj} />
         })}
       </ul>
-      
+
       <ButtonsContainer />
     </>
   )
