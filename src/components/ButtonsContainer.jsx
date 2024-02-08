@@ -1,6 +1,6 @@
 import { Button } from './Button'
 
-export default function ButtonsContainer() {
+export const ButtonsContainer = () => {
   return (
     <div className="buttons_container">
       <Button>Start quiz</Button>
