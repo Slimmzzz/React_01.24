@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 import MainScreen from './components/MainScreen'
 import QuizScreen from './components/QuizScreen'
+import { ResultsScreen } from './components/ResultsScreen'
 
 export const MockDataContext = createContext()
 
@@ -21,6 +22,7 @@ function App() {
       <MockDataContext.Provider value={mockData}>
         <QuizScreen />
       </MockDataContext.Provider>
+      <ResultsScreen />
     </>
   )
 }
