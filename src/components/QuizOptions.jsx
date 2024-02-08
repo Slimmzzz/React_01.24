@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import OptionSelect from './OptionSelect'
-import ButtonsContainer from './ButtonsContainer'
+import { ButtonsContainer } from './ButtonsContainer'
 
 export default function QuizOptions() {
   const [optionsList, SetOptionsList] = useState({
