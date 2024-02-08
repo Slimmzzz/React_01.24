@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react'
 
 export default function QuizTimerAndCurrentQuestion({ minutes = 1 }) {
   const [over, setOver] = useState(false)
-  const [[m, s], setTime] = useState([minutes, 0])
+  const [[min, sec], setTime] = useState([minutes, 0])
 
   function tick() {
     if (over) return
 
-    if (m === 0 && s === 0) {
+    if (min === 0 && sec === 0) {
       setOver(true)
-    } else if (s === 0) {
-      setTime([m - 1, 59])
+    } else if (sec === 0) {
+      setTime([min - 1, 59])
     } else {
-      setTime([m, s - 1])
+      setTime([min, sec - 1])
     }
   }
 
