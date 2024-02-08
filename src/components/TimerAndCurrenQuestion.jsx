@@ -28,7 +28,7 @@ export default function QuizTimerAndCurrentQuestion({ minutes = 1 }) {
       {over ? (
         <div style={{ color: 'red', fontSize: '24px' }}>Time&lsquo;s up!</div>
       ) : (
-        <span>Timer: {`${m.toString()}:${s.toString().padStart(2, '0')}`}</span>
+        <span>Timer: {`${min.toString()}:${sec.toString().padStart(2, '0')}`}</span>
       )}
     </div>
   )
