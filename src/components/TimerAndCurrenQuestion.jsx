@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 
-export default function QuizTimerAndCurrentQuestion({ minutes = 1 }) {
+export const QuizTimerAndCurrentQuestion = ({ minutes = 1 }) => {
   const [over, setOver] = useState(false)
   const [[min, sec], setTime] = useState([minutes, 0])
+  const navigate = useNavigate();
+  const ref = useRef(null);
 
   function tick() {
     if (over) return
@@ -22,11 +26,15 @@ export default function QuizTimerAndCurrentQuestion({ minutes = 1 }) {
     return () => clearInterval(timerId)
   })
 
+
   return (
     <div className="info_block">
       <p>Question: 1 out of 5</p>
       {over ? (
-        <div style={{ color: 'red', fontSize: '24px' }}>Time&lsquo;s up!</div>
+        <>
+          <div ref={ref} style={{ color: 'red', fontSize: '24px' }}>Time&lsquo;s up!</div>
+          {setTimeout(() => ROUTE_HELPERS.handleGoToResultsScreen(navigate), 0)}
+        </>
       ) : (
         <span>Timer: {`${min.toString()}:${sec.toString().padStart(2, '0')}`}</span>
       )}

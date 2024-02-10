@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import OptionSelect from './OptionSelect'
-import { ButtonsContainer } from './ButtonsContainer'
+import { OptionSelect } from './OptionSelect'
+import { Button } from './Button'
+import { useNavigate } from 'react-router-dom'
+import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 
 export default function QuizOptions() {
+  const navigate = useNavigate()
   const [optionsList, SetOptionsList] = useState({
     questions_quantity: 5,
     questions_category: 'One',
@@ -14,7 +17,7 @@ export default function QuizOptions() {
   function onChangeHandler(e) {
     SetOptionsList(optionsList, (optionsList[e.target.id] = e.target.value))
   }
-
+  
   let inputsOptions = [
     {
       id: 'questions_quantity',
@@ -56,7 +59,10 @@ export default function QuizOptions() {
         })}
       </ul>
 
-      <ButtonsContainer />
+      <div className="buttons_container">
+        <Button onPush={() => ROUTE_HELPERS.handleGoToQuizScreen(navigate)}>Start quiz</Button>
+        <Button onPush={() => ROUTE_HELPERS.handleGoToStatisticsScreen(navigate)}>See my statistics</Button>
+      </div>
     </>
   )
 }
