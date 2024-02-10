@@ -17,15 +17,7 @@ export default function QuizOptions() {
   function onChangeHandler(e) {
     SetOptionsList(optionsList, (optionsList[e.target.id] = e.target.value))
   }
-
-  // function handleGoToQuizScreen() {
-  //   navigate('/quiz');
-  // }
-
-  // function handleGoToStatisticsScreen() {
-  //   navigate('/statistics');
-  // }
-
+  
   let inputsOptions = [
     {
       id: 'questions_quantity',

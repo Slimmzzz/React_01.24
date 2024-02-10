@@ -5,10 +5,6 @@ import { ROUTE_HELPERS } from './router/ROUTE_HELPERS';
 export const ModalWindow = ({ closeModal }) => {
   const navigate = useNavigate();
 
-  // function handleGoMainPage() {
-  //   navigate('/');
-  // }
-
   return (
     <>
       <div className="layout"></div>

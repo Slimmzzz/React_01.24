@@ -6,10 +6,6 @@ import { ROUTE_HELPERS } from './ROUTE_HELPERS';
 export const ErrorRouteScreen = () => {
   const navigate = useNavigate();
 
-  // function handleGoMainPage() {
-  //   navigate('/');
-  // }
-
   return (
     <div className='error_wrapper'>
       <h1 className='error_h1'>Ooops, something went wrong.</h1>

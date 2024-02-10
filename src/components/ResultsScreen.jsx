@@ -4,14 +4,6 @@ import { useNavigate } from 'react-router-dom';
 export const ResultsScreen = () => {
   const navigate = useNavigate();
 
-  // function handleGoMainPage() {
-  //   navigate('/');
-  // }
-
-  // function handleGoToQuizScreen() {
-  //   navigate('/quiz');
-  // }
-
   return (
     <div className="container results_screen">
       <h1 className="h1">Thank you for completing this quiz. Here are your results</h1>
