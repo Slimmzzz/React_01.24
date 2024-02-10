@@ -1,5 +1,6 @@
 import { Button } from './Button';
 import { useNavigate } from 'react-router-dom';
+import { ROUTE_HELPERS } from './router/ROUTE_HELPERS';
 
 export const ResultsScreen = () => {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export const ResultsScreen = () => {
       </div>
       <h4 className="h4">Time spent: 2:33</h4>
       <div className="btns_wrapper">
-        <Button onPush={() => handleGoToQuizScreen(navigate)}>Restart</Button>
-        <Button onPush={() => handleGoMainPage(navigate)}>Choose another quiz</Button>
+        <Button onPush={() => ROUTE_HELPERS.handleGoToQuizScreen(navigate)}>Restart</Button>
+        <Button onPush={() => ROUTE_HELPERS.handleGoMainPage(navigate)}>Choose another quiz</Button>
       </div>
     </div>
   )
