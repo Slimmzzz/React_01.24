@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-export default function OptionSelect({ inputType, optionType, id, values, onChange }) {
+export const OptionSelect = ({ inputType, optionType, id, values, onChange }) => {
   const inputRef = useRef(null)
   let textContent = ''
 

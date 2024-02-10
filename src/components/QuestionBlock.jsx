@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { Button } from './Button'
-import { MockDataContext } from '../App'
+import { MockDataContext } from './QuizScreen'
 
-export default function QuestionBlock() {
+export const QuestionBlock = () => {
   let mockDataContext = useContext(MockDataContext)
 
   let answersArr = [
