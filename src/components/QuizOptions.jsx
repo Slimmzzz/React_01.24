@@ -1,23 +1,46 @@
-import { useState } from 'react'
 import { OptionSelect } from './OptionSelect'
 import { Button } from './Button'
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
+import { useLoaderData } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {
+  setQuestionsCategory,
+  setQuestionsDifficulty,
+  setQuestionsQuantity,
+  setQuestionsType,
+  setQuizTime
+} from './redux/optionsReducer/optionsReducer'
 
-export default function QuizOptions() {
+export function QuizOptions() {
+  const topics = useLoaderData()
   const navigate = useNavigate()
-  const [optionsList, SetOptionsList] = useState({
-    questions_quantity: 5,
-    questions_category: 'One',
-    questions_difficulty: 'Easy',
-    questions_type: 'Multiple',
-    quiz_time: '1m'
-  })
+  const dispatch = useDispatch()
 
-  function onChangeHandler(e) {
-    SetOptionsList(optionsList, (optionsList[e.target.id] = e.target.value))
+  const topicsArr = topics['trivia_categories'].map(
+    (question) => `${question.id} - ${question.name}`
+  )
+
+  const onChangeHandler = (e) => {
+    switch (e.target.id) {
+      case 'questions_quantity':
+        dispatch(setQuestionsQuantity(e.target.value))
+        break
+      case 'questions_category':
+        dispatch(setQuestionsCategory(e.target.value))
+        break
+      case 'questions_difficulty':
+        dispatch(setQuestionsDifficulty(e.target.value))
+        break
+      case 'questions_type':
+        dispatch(setQuestionsType(e.target.value))
+        break
+      case 'quiz_time':
+        dispatch(setQuizTime(e.target.value))
+        break
+    }
   }
-  
+
   let inputsOptions = [
     {
       id: 'questions_quantity',
@@ -29,19 +52,19 @@ export default function QuizOptions() {
       id: 'questions_category',
       inputType: 'select',
       optionType: 'Select questions category:',
-      values: ['One', 'History', 'Politics']
+      values: ['Any category', ...topicsArr]
     },
     {
       id: 'questions_difficulty',
       inputType: 'select',
       optionType: 'Select difficulty:',
-      values: ['Easy', 'Medium', 'Hard']
+      values: ['Any difficulty', 'Easy', 'Medium', 'Hard']
     },
     {
       id: 'questions_type',
       inputType: 'select',
       optionType: 'Select answers type:',
-      values: ['Multiple', 'True/false']
+      values: ['Any type', 'Multiple', 'True/false']
     },
     {
       id: 'quiz_time',
@@ -61,7 +84,9 @@ export default function QuizOptions() {
 
       <div className="buttons_container">
         <Button onPush={() => ROUTE_HELPERS.handleGoToQuizScreen(navigate)}>Start quiz</Button>
-        <Button onPush={() => ROUTE_HELPERS.handleGoToStatisticsScreen(navigate)}>See my statistics</Button>
+        <Button onPush={() => ROUTE_HELPERS.handleGoToStatisticsScreen(navigate)}>
+          See my statistics
+        </Button>
       </div>
     </>
   )

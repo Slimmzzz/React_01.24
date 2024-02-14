@@ -1,1 +1,5 @@
-export const Button = ({ onPush, children }) => <button className="button" onClick={onPush}>{children}</button>
+export const Button = ({ onPush, children }) => (
+  <button className="button" onClick={onPush}>
+    {children}
+  </button>
+)

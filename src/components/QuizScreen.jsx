@@ -8,7 +8,7 @@ import { createPortal } from 'react-dom'
 export const MockDataContext = createContext()
 
 export const QuizScreen = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   let mockData = [
     {
@@ -17,6 +17,14 @@ export const QuizScreen = () => {
       difficulty: 'easy',
       incorrect_answers: ['Historic Landmarks', 'Action Films', 'Documentaries'],
       question: 'What does film maker Dan Bell typically focus his films on?',
+      type: 'multiple'
+    },
+    {
+      category: 'General Knowledge',
+      correct_answer: 'Rosh Hashanah',
+      difficulty: 'easy',
+      incorrect_answers: ['Elul', 'New Year', 'Succoss'],
+      question: 'What is the name of the Jewish New Year?',
       type: 'multiple'
     }
   ]
