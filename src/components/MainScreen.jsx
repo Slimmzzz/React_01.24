@@ -1,4 +1,4 @@
-import QuizOptions from './QuizOptions'
+import { QuizOptions } from './QuizOptions'
 
 export const MainScreen = () => {
   return (
