@@ -59,6 +59,10 @@ html, body {
   font-size: 20px;
   font-weight: 600;
 }
+.container.quiz_screen .question_block .question_text_block {
+  width: 600px;
+  text-align: center;
+}
 .container.quiz_screen .question_block .answer_btns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -99,6 +103,17 @@ html, body {
 }
 .container .btns_wrapper button {
   font-size: 18px;
+}
+.container.results_screen .button {
+  width: 200px;
+  margin: 0 auto;
+}
+.container.results_screen .h2 {
+  text-align: center;
+}
+.container.results_screen .statistics_block {
+  height: 500px;
+  overflow-y: scroll;
 }
 
 .button {

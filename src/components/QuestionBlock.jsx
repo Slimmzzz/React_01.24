@@ -1,20 +1,23 @@
-import { useContext } from 'react'
 import { Button } from './Button'
-import { MockDataContext } from './QuizScreen'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { increment } from './redux/questionNumReducer/questionNumReducer'
+import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
+import { correctAnswersIncrement } from './redux/correctAnswersReducer/correctAnswersSlice'
 
 export const QuestionBlock = () => {
-  let mockDataContext = useContext(MockDataContext)
   const questionNumFromRedux = useSelector((store) => store.questionNum.value)
+  const optionsFromRedux = useSelector((store) => store.quizOptions)
+  const { data, isLoading, isFetching } = useGetQuestionFromInputQuery(optionsFromRedux)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  if (isLoading || isFetching) return <p>Loading...</p>
+
   let answersArr = [
-    mockDataContext[questionNumFromRedux]['correct_answer'],
-    ...mockDataContext[questionNumFromRedux]['incorrect_answers']
+    data.results[questionNumFromRedux]['correct_answer'],
+    ...data.results[questionNumFromRedux]['incorrect_answers']
   ]
   shuffle(answersArr)
 
@@ -22,8 +25,12 @@ export const QuestionBlock = () => {
     return arr.sort(() => Math.random() - 0.5)
   }
 
-  const handleAnswersBtnsClick = () => {
-    if (mockDataContext[questionNumFromRedux + 1]) {
+  const handleAnswersBtnsClick = (e) => {
+    if (e.target.textContent === data.results[questionNumFromRedux]['correct_answer']) {
+      dispatch(correctAnswersIncrement())
+    }
+
+    if (data.results[questionNumFromRedux + 1]) {
       dispatch(increment())
     } else {
       ROUTE_HELPERS.handleGoToResultsScreen(navigate)
@@ -32,7 +39,9 @@ export const QuestionBlock = () => {
 
   return (
     <div className="question_block">
-      <p>{mockDataContext[questionNumFromRedux].question}</p>
+      <div className="question_text_block">
+        <p>{data.results[questionNumFromRedux].question}</p>
+      </div>
 
       <div className="answer_btns">
         {answersArr.map((answer) => (

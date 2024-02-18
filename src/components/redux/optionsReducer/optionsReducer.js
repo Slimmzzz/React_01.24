@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   questions_quantity: 5,
-  questions_category: 'Any category',
-  questions_difficulty: 'Any difficulty',
-  questions_type: 'Multiple',
-  quiz_time: '1m'
+  questions_category: '',
+  questions_difficulty: '',
+  questions_type: '',
+  quiz_time: '1'
 }
 
 const optionSlice = createSlice({
