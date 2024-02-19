@@ -29,81 +29,81 @@ export const StatisticsScreen = () => {
             <h3 className="h3">Amount of question by topics:</h3>
             <ul className="list_block">
               <li className="list_item">
-                <p>General Knowledge: {statisticsDataFromRedux.categories['9']}</p>
+                <p>General Knowledge: {statisticsDataFromRedux.categories["General Knowledge"]}</p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Books: {statisticsDataFromRedux.categories['10']}</p>
+                <p>Entertainment: Books: {statisticsDataFromRedux.categories["Entertainment: Books"]}</p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Film: {statisticsDataFromRedux.categories['11']}</p>
+                <p>Entertainment: Film: {statisticsDataFromRedux.categories["Entertainment: Film"]}</p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Music: {statisticsDataFromRedux.categories['12']}</p>
+                <p>Entertainment: Music: {statisticsDataFromRedux.categories["Entertainment: Music"]}</p>
               </li>
               <li className="list_item">
                 <p>
-                  Entertainment: Musicals & Theatres: {statisticsDataFromRedux.categories['13']}
+                  Entertainment: Musicals & Theatres: {statisticsDataFromRedux.categories["Entertainment: Musicals &amp; Theatres"]}
                 </p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Television: {statisticsDataFromRedux.categories['14']}</p>
+                <p>Entertainment: Television: {statisticsDataFromRedux.categories["Entertainment: Television"]}</p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Video Games: {statisticsDataFromRedux.categories['15']}</p>
+                <p>Entertainment: Video Games: {statisticsDataFromRedux.categories["Entertainment: Video Games"]}</p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Board Games: {statisticsDataFromRedux.categories['16']}</p>
+                <p>Entertainment: Board Games: {statisticsDataFromRedux.categories["Entertainment: Board Games"]}</p>
               </li>
               <li className="list_item">
-                <p>Science & Nature: {statisticsDataFromRedux.categories['17']}</p>
+                <p>Science & Nature: {statisticsDataFromRedux.categories["Science &amp; Nature"]}</p>
               </li>
               <li className="list_item">
-                <p>Science: Computers: {statisticsDataFromRedux.categories['18']}</p>
+                <p>Science: Computers: {statisticsDataFromRedux.categories["Science: Computers"]}</p>
               </li>
               <li className="list_item">
-                <p>Science: Mathematics: {statisticsDataFromRedux.categories['19']}</p>
+                <p>Science: Mathematics: {statisticsDataFromRedux.categories["Science: Mathematics"]}</p>
               </li>
               <li className="list_item">
-                <p>Mythology: {statisticsDataFromRedux.categories['20']}</p>
+                <p>Mythology: {statisticsDataFromRedux.categories["Mythology"]}</p>
               </li>
               <li className="list_item">
-                <p>Sports: {statisticsDataFromRedux.categories['21']}</p>
+                <p>Sports: {statisticsDataFromRedux.categories["Sports"]}</p>
               </li>
               <li className="list_item">
-                <p>Geography: {statisticsDataFromRedux.categories['22']}</p>
+                <p>Geography: {statisticsDataFromRedux.categories["Geography"]}</p>
               </li>
               <li className="list_item">
-                <p>History: {statisticsDataFromRedux.categories['23']}</p>
+                <p>History: {statisticsDataFromRedux.categories["History"]}</p>
               </li>
               <li className="list_item">
-                <p>Politics: {statisticsDataFromRedux.categories['24']}</p>
+                <p>Politics: {statisticsDataFromRedux.categories["Politics"]}</p>
               </li>
               <li className="list_item">
-                <p>Art: {statisticsDataFromRedux.categories['25']}</p>
+                <p>Art: {statisticsDataFromRedux.categories["Art"]}</p>
               </li>
               <li className="list_item">
-                <p>Celebrities: {statisticsDataFromRedux.categories['26']}</p>
+                <p>Celebrities: {statisticsDataFromRedux.categories["Celebrities"]}</p>
               </li>
               <li className="list_item">
-                <p>Animals: {statisticsDataFromRedux.categories['27']}</p>
+                <p>Animals: {statisticsDataFromRedux.categories["Animals"]}</p>
               </li>
               <li className="list_item">
-                <p>Vehicles: {statisticsDataFromRedux.categories['28']}</p>
+                <p>Vehicles: {statisticsDataFromRedux.categories["Vehicles"]}</p>
               </li>
               <li className="list_item">
-                <p>Entertainment: Comics: {statisticsDataFromRedux.categories['29']}</p>
+                <p>Entertainment: Comics: {statisticsDataFromRedux.categories["Entertainment: Comics"]}</p>
               </li>
               <li className="list_item">
-                <p>Science: Gadgets: {statisticsDataFromRedux.categories['30']}</p>
+                <p>Science: Gadgets: {statisticsDataFromRedux.categories["Science: Gadgets"]}</p>
               </li>
               <li className="list_item">
                 <p>
-                  Entertainment: Japanese Anime & Manga: {statisticsDataFromRedux.categories['31']}
+                  Entertainment: Japanese Anime & Manga: {statisticsDataFromRedux.categories["Entertainment: Japanese Anime &amp; Manga"]}
                 </p>
               </li>
               <li className="list_item">
                 <p>
-                  Entertainment: Cartoon & Animations: {statisticsDataFromRedux.categories['32']}
+                  Entertainment: Cartoon & Animations: {statisticsDataFromRedux.categories["Entertainment: Cartoon &amp; Animations"]}
                 </p>
               </li>
             </ul>
@@ -113,13 +113,13 @@ export const StatisticsScreen = () => {
             <h3>Amount of question by difficulty:</h3>
             <ul className="list_block">
               <li className="list_item">
-                <p>Easy: {statisticsDataFromRedux.difficulty.Easy}</p>
+                <p>Easy: {statisticsDataFromRedux.difficulty.easy}</p>
               </li>
               <li className="list_item">
-                <p>Medium: {statisticsDataFromRedux.difficulty.Medium}</p>
+                <p>Medium: {statisticsDataFromRedux.difficulty.medium}</p>
               </li>
               <li className="list_item">
-                <p>Hard: {statisticsDataFromRedux.difficulty.Hard}</p>
+                <p>Hard: {statisticsDataFromRedux.difficulty.hard}</p>
               </li>
             </ul>
           </li>

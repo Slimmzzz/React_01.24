@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { resetQuestionsNum } from './redux/questionNumReducer/questionNumReducer'
 import { resetOptions } from './redux/optionsReducer/optionsReducer'
 import { resetCorrectSlice } from './redux/correctAnswersReducer/correctAnswersSlice'
-import { useEffect } from 'react'
-import { addDataToStatistics } from './redux/StatisticsReducer/StatisticsSlice'
 
 export const ResultsScreen = () => {
   const navigate = useNavigate()
@@ -15,15 +13,6 @@ export const ResultsScreen = () => {
     (state) => state.correctAnswersAmount.correctAnswersAmount
   )
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    let resultToStatistics = { ...optionsFromRedux, correct_answers: correctAnswersAmountFromRedux }
-    let categoryToRedux = Number(resultToStatistics['questions_category'].slice(0, 2).trim())
-    let questionsAmountToNum = Number(resultToStatistics['questions_quantity'])
-    resultToStatistics['questions_category'] = categoryToRedux
-    resultToStatistics['questions_quantity'] = questionsAmountToNum
-    dispatch(addDataToStatistics(resultToStatistics))
-  }, [correctAnswersAmountFromRedux, dispatch, optionsFromRedux])
 
   return (
     <div className="container results_screen">

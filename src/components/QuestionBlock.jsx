@@ -5,6 +5,7 @@ import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { increment } from './redux/questionNumReducer/questionNumReducer'
 import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
 import { correctAnswersIncrement } from './redux/correctAnswersReducer/correctAnswersSlice'
+import { addDataToStatistics, incrementCorrectAnswer } from './redux/StatisticsReducer/StatisticsSlice'
 
 export const QuestionBlock = () => {
   const questionNumFromRedux = useSelector((store) => store.questionNum.value)
@@ -14,7 +15,7 @@ export const QuestionBlock = () => {
   const dispatch = useDispatch()
 
   if (isLoading || isFetching) return <p>Loading...</p>
-
+  
   let answersArr = [
     data.results[questionNumFromRedux]['correct_answer'],
     ...data.results[questionNumFromRedux]['incorrect_answers']
@@ -27,8 +28,11 @@ export const QuestionBlock = () => {
 
   const handleAnswersBtnsClick = (e) => {
     if (e.target.textContent === data.results[questionNumFromRedux]['correct_answer']) {
+      dispatch(incrementCorrectAnswer())
       dispatch(correctAnswersIncrement())
     }
+
+    dispatch(addDataToStatistics(data.results[questionNumFromRedux]))
 
     if (data.results[questionNumFromRedux + 1]) {
       dispatch(increment())
