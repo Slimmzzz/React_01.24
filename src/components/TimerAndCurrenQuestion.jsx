@@ -36,7 +36,7 @@ export const QuizTimerAndCurrentQuestion = ({ quizEnd }) => {
     }
 
     return () => clearInterval(timerId)
-  }, [min, sec, navigate, over])
+  }, [min, sec, navigate, over, quizEnd])
 
   return (
     <div className="info_block">
