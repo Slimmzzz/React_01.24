@@ -5,14 +5,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import { resetQuestionsNum } from './redux/questionNumReducer/questionNumReducer'
 import { resetOptions } from './redux/optionsReducer/optionsReducer'
 import { resetCorrectSlice } from './redux/correctAnswersReducer/correctAnswersSlice'
+import { resetTimeSpent } from './redux/timeSpentForQuiz/timeSpentForQuiz'
+import { addTimeSpentToStatistics } from './redux/StatisticsReducer/StatisticsSlice'
+import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
 
 export const ResultsScreen = () => {
   const navigate = useNavigate()
   const optionsFromRedux = useSelector((store) => store.quizOptions)
+  const { refetch } = useGetQuestionFromInputQuery(optionsFromRedux)
   const correctAnswersAmountFromRedux = useSelector(
     (state) => state.correctAnswersAmount.correctAnswersAmount
   )
+  const timeSpentFromRedux = useSelector((state) => state.timeSpentForQuiz)
   const dispatch = useDispatch()
+  
 
   return (
     <div className="container results_screen">
@@ -46,22 +52,30 @@ export const ResultsScreen = () => {
           </li>
         </ul>
       </div>
-      <h4 className="h4">Time spent: 2:33</h4>
+      <h4 className="h4">
+        Time spent: {timeSpentFromRedux.minutes}:
+        {timeSpentFromRedux.seconds.toString().padStart(2, '0')}
+      </h4>
       <div className="btns_wrapper">
         <Button
           onPush={() => {
             ROUTE_HELPERS.handleGoToQuizScreen(navigate)
+            refetch()
+            dispatch(addTimeSpentToStatistics(timeSpentFromRedux))
             dispatch(resetQuestionsNum())
             dispatch(resetCorrectSlice())
+            dispatch(resetTimeSpent())
           }}>
           Restart
         </Button>
         <Button
           onPush={() => {
             ROUTE_HELPERS.handleGoMainPage(navigate)
+            dispatch(addTimeSpentToStatistics(timeSpentFromRedux))
             dispatch(resetOptions())
             dispatch(resetQuestionsNum())
             dispatch(resetCorrectSlice())
+            dispatch(resetTimeSpent())
           }}>
           Choose another quiz
         </Button>

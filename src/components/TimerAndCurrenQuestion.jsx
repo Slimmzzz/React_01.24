@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { useSelector } from 'react-redux'
 
-export const QuizTimerAndCurrentQuestion = () => {
+export const QuizTimerAndCurrentQuestion = ({ quizEnd }) => {
   const optionsFromRedux = useSelector((store) => store.quizOptions)
   const questionNumFromRedux = useSelector((store) => store.questionNum)
   const [over, setOver] = useState(false)
@@ -17,6 +17,7 @@ export const QuizTimerAndCurrentQuestion = () => {
 
       if (min === 0 && sec === 0) {
         setOver(true)
+        quizEnd()
       } else if (sec === 0) {
         setTime(([min]) => [min - 1, 59])
       } else {
@@ -29,6 +30,7 @@ export const QuizTimerAndCurrentQuestion = () => {
     if (min <= 0 && sec <= 0) {
       clearInterval(timerId)
       setOver(true)
+      quizEnd()
 
       setTimeout(() => ROUTE_HELPERS.handleGoToResultsScreen(navigate), 2500)
     }
