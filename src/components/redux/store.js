@@ -15,13 +15,15 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
+import { timeSpentForQuizReducer } from './timeSpentForQuiz/timeSpentForQuiz'
 
 const combinedReducers = combineReducers({
   quizOptions: optionsReducer,
   [questionsApi.reducerPath]: questionsApi.reducer,
   statistics: statisticsReducer,
   questionNum: questionNumReducer,
-  correctAnswersAmount: correctAnswersReducer
+  correctAnswersAmount: correctAnswersReducer,
+  timeSpentForQuiz: timeSpentForQuizReducer
 })
 
 const persistConfig = {

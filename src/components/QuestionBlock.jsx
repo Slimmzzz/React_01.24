@@ -5,7 +5,11 @@ import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { increment } from './redux/questionNumReducer/questionNumReducer'
 import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
 import { correctAnswersIncrement } from './redux/correctAnswersReducer/correctAnswersSlice'
-import { addDataToStatistics, incrementCorrectAnswer } from './redux/StatisticsReducer/StatisticsSlice'
+import {
+  addDataToStatistics,
+  incrementCorrectAnswer
+} from './redux/StatisticsReducer/StatisticsSlice'
+import { decode } from 'html-entities'
 
 export const QuestionBlock = () => {
   const questionNumFromRedux = useSelector((store) => store.questionNum.value)
@@ -15,7 +19,7 @@ export const QuestionBlock = () => {
   const dispatch = useDispatch()
 
   if (isLoading || isFetching) return <p>Loading...</p>
-  
+
   let answersArr = [
     data.results[questionNumFromRedux]['correct_answer'],
     ...data.results[questionNumFromRedux]['incorrect_answers']
@@ -44,13 +48,13 @@ export const QuestionBlock = () => {
   return (
     <div className="question_block">
       <div className="question_text_block">
-        <p>{data.results[questionNumFromRedux].question}</p>
+        <p>{decode(data.results[questionNumFromRedux].question)}</p>
       </div>
 
       <div className="answer_btns">
         {answersArr.map((answer) => (
           <Button onPush={handleAnswersBtnsClick} key={answer}>
-            {answer}
+            {decode(answer)}
           </Button>
         ))}
       </div>
