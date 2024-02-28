@@ -6,6 +6,7 @@ import { QuizTimerAndCurrentQuestion } from './TimerAndCurrenQuestion'
 import { ModalWindow } from './ModalWindow'
 import { createPortal } from 'react-dom'
 import { addTimeSpentForQuiz } from './redux/timeSpentForQuiz/timeSpentForQuiz'
+import { motion } from 'framer-motion'
 
 export const QuizScreen = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,13 +45,26 @@ export const QuizScreen = () => {
   })
 
   return (
-    <div className="container quiz_screen">
+    <motion.div
+      className="container quiz_screen"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+        scale: {
+          type: 'spring',
+          damping: 5,
+          stiffness: 100,
+          restDelta: 0.001
+        }
+      }}>
       <h1 className="h1">Quiz Machine</h1>
       <QuizTimerAndCurrentQuestion quizEnd={() => quizFinishHandler()} />
       <QuestionBlock />
       <Button onPush={() => setIsOpen(true)}>End quiz</Button>
 
       {isOpen ? createPortal(<ModalWindow closeModal={handleCloseModal} />, document.body) : null}
-    </div>
+    </motion.div>
   )
 }

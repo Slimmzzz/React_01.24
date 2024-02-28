@@ -8,6 +8,7 @@ import { resetCorrectSlice } from './redux/correctAnswersReducer/correctAnswersS
 import { resetTimeSpent } from './redux/timeSpentForQuiz/timeSpentForQuiz'
 import { addTimeSpentToStatistics } from './redux/StatisticsReducer/StatisticsSlice'
 import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
+import { motion } from 'framer-motion'
 
 export const ResultsScreen = () => {
   const navigate = useNavigate()
@@ -18,10 +19,22 @@ export const ResultsScreen = () => {
   )
   const timeSpentFromRedux = useSelector((state) => state.timeSpentForQuiz)
   const dispatch = useDispatch()
-  
 
   return (
-    <div className="container results_screen">
+    <motion.div
+      className="container results_screen"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+        scale: {
+          type: 'spring',
+          damping: 5,
+          stiffness: 100,
+          restDelta: 0.001
+        }
+      }}>
       <h1 className="h1">Thank you for completing this quiz. Here are your results</h1>
       <p className="correct_answers">
         You answered {correctAnswersAmountFromRedux} out of {optionsFromRedux['questions_quantity']}{' '}
@@ -80,6 +93,6 @@ export const ResultsScreen = () => {
           Choose another quiz
         </Button>
       </div>
-    </div>
+    </motion.div>
   )
 }
