@@ -2,15 +2,27 @@ import { useSelector } from 'react-redux'
 import { Button } from './Button'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export const StatisticsScreen = () => {
-  const { questions, categories, difficulty, type, time } = useSelector(
-    (state) => state.statistics
-  )
+  const { questions, categories, difficulty, type, time } = useSelector((state) => state.statistics)
   const navigate = useNavigate()
 
   return (
-    <div className="container results_screen">
+    <motion.div
+      className="container results_screen"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+        scale: {
+          type: 'spring',
+          damping: 5,
+          stiffness: 100,
+          restDelta: 0.001
+        }
+      }}>
       <h1 className="h1">Quiz Machine</h1>
       <h2 className="h2">Your personal statistics:</h2>
       <Button onPush={() => ROUTE_HELPERS.handleGoMainPage(navigate)}>Back to main</Button>
@@ -24,7 +36,10 @@ export const StatisticsScreen = () => {
             <p>Overall number of correct answers: {questions.allCorrectAnswers}</p>
           </li>
           <li className="list_item">
-            <p>Overall time spent for quizes: {time.minutes}:{time.seconds.toString().padStart(2, '0')}</p>
+            <p>
+              Overall time spent for quizes: {time.minutes}:
+              {time.seconds.toString().padStart(2, '0')}
+            </p>
           </li>
 
           <li className="list_item">
@@ -67,6 +82,6 @@ export const StatisticsScreen = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   )
 }
