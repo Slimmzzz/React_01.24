@@ -13,7 +13,7 @@ import {
 } from './redux/optionsReducer/optionsReducer'
 
 export function QuizOptions() {
-  const topics = useLoaderData()
+  const topics = useLoaderData() as {trivia_categories: any[]}
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -21,7 +21,7 @@ export function QuizOptions() {
     (question) => `${question.id} - ${question.name}`
   )
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: any) => {
     switch (e.target.id) {
       case 'questions_quantity':
         dispatch(setQuestionsQuantity(e.target.value))

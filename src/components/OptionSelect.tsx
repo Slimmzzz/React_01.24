@@ -1,17 +1,19 @@
 import { useRef } from 'react'
 
-export const OptionSelect = ({ inputType, optionType, id, values, onChange }) => {
-  const inputRef = useRef(null)
-  let textContent = ''
+export const OptionSelect = ({ inputType, optionType, id, values, onChange }: any) => {
+  const inputRef = useRef<null | HTMLInputElement>(null)
+  let textContent = null
 
   function onFocusOut() {
-    if (inputRef.current.value < 5) {
+    if (!inputRef.current) return
+
+    if (parseInt(inputRef.current.value) < 5) {
       inputRef.current.focus()
-      inputRef.current.value = null
+      inputRef.current.value = ''
       inputRef.current.placeholder = 'Неверное значение'
-    } else if (inputRef.current.value > 15) {
+    } else if (parseInt(inputRef.current.value) > 15) {
       inputRef.current.focus()
-      inputRef.current.value = null
+      inputRef.current.value = ''
       inputRef.current.placeholder = 'Неверное значение'
     }
   }
@@ -23,7 +25,7 @@ export const OptionSelect = ({ inputType, optionType, id, values, onChange }) =>
           {optionType}
 
           <select id={id} onChange={onChange}>
-            {values.map((value) => {
+            {values.map((value: any) => {
               return (
                 <option key={value} value={value}>
                   {value}

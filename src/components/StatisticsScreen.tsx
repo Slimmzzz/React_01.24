@@ -3,9 +3,11 @@ import { Button } from './Button'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { RootState } from './redux/store'
+import { ReactNode } from 'react'
 
 export const StatisticsScreen = () => {
-  const { questions, categories, difficulty, type, time } = useSelector((state) => state.statistics)
+  const { questions, categories, difficulty, type, time } = useSelector((state: RootState) => state.statistics)
   const navigate = useNavigate()
 
   return (
@@ -48,7 +50,7 @@ export const StatisticsScreen = () => {
               {Object.entries(categories).map((categoryItem, index) => (
                 <li key={index} className="list_item">
                   <p>
-                    {categoryItem[0]}: {categoryItem[1]}
+                    {categoryItem[0]}: {categoryItem[1] as ReactNode}
                   </p>
                 </li>
               ))}
@@ -62,7 +64,7 @@ export const StatisticsScreen = () => {
                 <li key={index} className="list_item">
                   <p>
                     {difficultyItem[0][0].toUpperCase() + difficultyItem[0].slice(1)}:{' '}
-                    {difficultyItem[1]}
+                    {difficultyItem[1] as ReactNode}
                   </p>
                 </li>
               ))}

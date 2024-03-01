@@ -4,13 +4,14 @@ import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetQuestionsNum } from './redux/questionNumReducer/questionNumReducer'
 import { resetOptions } from './redux/optionsReducer/optionsReducer'
-import { resetTimeSpent } from './redux/timeSpentForQuiz/timeSpentForQuiz'
+import { resetTimeSpent } from './redux/timeSpentForQuiz/TimeSpentForQuiz'
 import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
+import { RootState } from './redux/store'
 
-export const ModalWindow = ({ closeModal }) => {
+export const ModalWindow = ({ closeModal }: any) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const optionsFromRedux = useSelector((store) => store.quizOptions)
+  const optionsFromRedux = useSelector((store: RootState) => store.quizOptions)
   const { refetch } = useGetQuestionFromInputQuery(optionsFromRedux)
 
   return (

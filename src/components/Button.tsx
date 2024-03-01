@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-export const Button = ({ onPush, children }) => (
+export const Button = ({ onPush, children }: any) => (
   <motion.button
     className="button"
     onClick={onPush}

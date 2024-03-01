@@ -10,10 +10,11 @@ import {
   incrementCorrectAnswer
 } from './redux/StatisticsReducer/StatisticsSlice'
 import { decode } from 'html-entities'
+import { RootState } from './redux/store'
 
 export const QuestionBlock = () => {
-  const questionNumFromRedux = useSelector((store) => store.questionNum.value)
-  const optionsFromRedux = useSelector((store) => store.quizOptions)
+  const questionNumFromRedux = useSelector((store: RootState) => store.questionNum.value)
+  const optionsFromRedux = useSelector((store: RootState) => store.quizOptions)
   const { data, isLoading, isFetching } = useGetQuestionFromInputQuery(optionsFromRedux)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -26,11 +27,11 @@ export const QuestionBlock = () => {
   ]
   shuffle(answersArr)
 
-  function shuffle(arr) {
+  function shuffle(arr: number[]) {
     return arr.sort(() => Math.random() - 0.5)
   }
 
-  const handleAnswersBtnsClick = (e) => {
+  const handleAnswersBtnsClick = (e: any) => {
     if (e.target.textContent === data.results[questionNumFromRedux]['correct_answer']) {
       dispatch(incrementCorrectAnswer())
       dispatch(correctAnswersIncrement())

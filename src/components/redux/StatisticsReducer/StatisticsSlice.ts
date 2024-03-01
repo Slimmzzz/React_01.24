@@ -1,4 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+interface IStatsSlice {
+  questions: {
+    allQuestions: number
+    allCorrectAnswers: number
+  },
+  categories: Record<string, number>
+  difficulty: Record<string, number>
+  type: {
+    boolean: number
+    multiple: number
+  },
+  time: {
+    minutes: number
+    seconds: number
+  }
+}
 
 const initialState = {
   questions: {
@@ -19,9 +36,9 @@ const initialState = {
 
 export const StatisticsSlice = createSlice({
   name: 'statisticsSlice',
-  initialState,
+  initialState: initialState as IStatsSlice,
   reducers: {
-    addDataToStatistics(state, action) {
+    addDataToStatistics(state, action: PayloadAction<Record<string, any>>) {
       state.questions.allQuestions += 1
 
       if (action.payload['category'] in state.categories) {

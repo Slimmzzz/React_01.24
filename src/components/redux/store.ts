@@ -15,7 +15,7 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
-import { timeSpentForQuizReducer } from './timeSpentForQuiz/timeSpentForQuiz'
+import { timeSpentForQuizReducer } from './timeSpentForQuiz/TimeSpentForQuiz'
 
 const combinedReducers = combineReducers({
   quizOptions: optionsReducer,
@@ -43,5 +43,7 @@ export const store = configureStore({
       }
     }).concat(questionsApi.middleware)
 })
+
+export type RootState = ReturnType<typeof store.getState>
 
 export const persistor = persistStore(store)
