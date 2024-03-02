@@ -38,7 +38,7 @@ export const QuestionBlock = () => {
       dispatch(incrementCorrectAnswer())
       dispatch(correctAnswersIncrement())
     }
-    console.log(data.results[questionNumFromRedux])
+    
     dispatch(addDataToStatistics(data.results[questionNumFromRedux]))
 
     if (data.results[questionNumFromRedux + 1]) {
