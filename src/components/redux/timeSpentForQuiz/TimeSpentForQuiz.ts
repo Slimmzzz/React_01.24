@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { PayloadForSpentTime } from '../../../Types/Types'
 
 const initialState = {
   minutes: 0,
@@ -9,7 +10,7 @@ export const TimeSpentForQuizSlice = createSlice({
   name: 'timeSpentForQuiz',
   initialState,
   reducers: {
-    addTimeSpentForQuiz(state, action) {
+    addTimeSpentForQuiz(state, action: PayloadForSpentTime) {
       state.minutes += action.payload[0]
       state.seconds += action.payload[1]
     },

@@ -5,6 +5,7 @@ import { optionsReducer } from './optionsReducer/optionsReducer'
 import { questionNumReducer } from './questionNumReducer/questionNumReducer'
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
+import { timeSpentForQuizReducer } from './timeSpentForQuiz/TimeSpentForQuiz'
 import {
   persistStore,
   persistReducer,
@@ -15,7 +16,6 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
-import { timeSpentForQuizReducer } from './timeSpentForQuiz/timeSpentForQuiz'
 
 const combinedReducers = combineReducers({
   quizOptions: optionsReducer,

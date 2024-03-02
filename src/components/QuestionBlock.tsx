@@ -10,32 +10,35 @@ import {
   incrementCorrectAnswer
 } from './redux/StatisticsReducer/StatisticsSlice'
 import { decode } from 'html-entities'
+import React from 'react'
+import { RootState } from '../Types/Types'
 
 export const QuestionBlock = () => {
-  const questionNumFromRedux = useSelector((store) => store.questionNum.value)
-  const optionsFromRedux = useSelector((store) => store.quizOptions)
+  const questionNumFromRedux = useSelector((store: RootState) => store.questionNum.value)
+  const optionsFromRedux = useSelector((store: RootState) => store.quizOptions)
   const { data, isLoading, isFetching } = useGetQuestionFromInputQuery(optionsFromRedux)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   if (isLoading || isFetching) return <p>Loading...</p>
 
-  let answersArr = [
+  const answersArr = [
     data.results[questionNumFromRedux]['correct_answer'],
     ...data.results[questionNumFromRedux]['incorrect_answers']
   ]
   shuffle(answersArr)
 
-  function shuffle(arr) {
+  function shuffle(arr: string[]): string[] {
     return arr.sort(() => Math.random() - 0.5)
   }
 
-  const handleAnswersBtnsClick = (e) => {
-    if (e.target.textContent === data.results[questionNumFromRedux]['correct_answer']) {
+  const handleAnswersBtnsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement
+    if (target.textContent === data.results[questionNumFromRedux]['correct_answer']) {
       dispatch(incrementCorrectAnswer())
       dispatch(correctAnswersIncrement())
     }
-
+    console.log(data.results[questionNumFromRedux])
     dispatch(addDataToStatistics(data.results[questionNumFromRedux]))
 
     if (data.results[questionNumFromRedux + 1]) {

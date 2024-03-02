@@ -11,9 +11,10 @@ import {
   setQuestionsType,
   setQuizTime
 } from './redux/optionsReducer/optionsReducer'
+import { QuizInputsOptions, TopicsFromApi } from '../Types/Types'
 
 export function QuizOptions() {
-  const topics = useLoaderData()
+  const topics = useLoaderData() as TopicsFromApi
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -21,10 +22,12 @@ export function QuizOptions() {
     (question) => `${question.id} - ${question.name}`
   )
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>
+  ) => {
     switch (e.target.id) {
       case 'questions_quantity':
-        dispatch(setQuestionsQuantity(e.target.value))
+        dispatch(setQuestionsQuantity(Number(e.target.value)))
         break
       case 'questions_category':
         dispatch(setQuestionsCategory(e.target.value))
@@ -41,7 +44,7 @@ export function QuizOptions() {
     }
   }
 
-  let inputsOptions = [
+  const inputsOptions: QuizInputsOptions = [
     {
       id: 'questions_quantity',
       inputType: 'input',

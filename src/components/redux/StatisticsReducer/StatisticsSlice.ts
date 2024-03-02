@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { SpentTimeForStatisticsAction, Statistics, StatisticsAction } from '../../../Types/Types'
 
-const initialState = {
+const initialState: Statistics = {
   questions: {
     allQuestions: 0,
     allCorrectAnswers: 0
@@ -21,7 +22,7 @@ export const StatisticsSlice = createSlice({
   name: 'statisticsSlice',
   initialState,
   reducers: {
-    addDataToStatistics(state, action) {
+    addDataToStatistics(state, action: StatisticsAction) {
       state.questions.allQuestions += 1
 
       if (action.payload['category'] in state.categories) {
@@ -44,10 +45,12 @@ export const StatisticsSlice = createSlice({
         state.type.boolean += 1
       }
     },
+
     incrementCorrectAnswer(state) {
       state.questions.allCorrectAnswers += 1
     },
-    addTimeSpentToStatistics(state, action) {
+
+    addTimeSpentToStatistics(state, action: SpentTimeForStatisticsAction) {
       state.time.seconds += action.payload.seconds
       state.time.minutes += action.payload.minutes
 

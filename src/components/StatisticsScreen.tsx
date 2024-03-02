@@ -3,9 +3,12 @@ import { Button } from './Button'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { RootState } from '../Types/Types'
 
 export const StatisticsScreen = () => {
-  const { questions, categories, difficulty, type, time } = useSelector((state) => state.statistics)
+  const { questions, categories, difficulty, type, time } = useSelector(
+    (state: RootState) => state.statistics
+  )
   const navigate = useNavigate()
 
   return (

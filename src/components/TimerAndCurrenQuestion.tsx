@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_HELPERS } from './router/ROUTE_HELPERS'
 import { useSelector } from 'react-redux'
+import { RootState, quizEndFunc } from '../Types/Types'
 
-export const QuizTimerAndCurrentQuestion = ({ quizEnd }) => {
-  const optionsFromRedux = useSelector((store) => store.quizOptions)
-  const questionNumFromRedux = useSelector((store) => store.questionNum)
+export const QuizTimerAndCurrentQuestion = ({ quizEnd }: quizEndFunc) => {
+  const optionsFromRedux = useSelector((store: RootState) => store.quizOptions)
+  const questionNumFromRedux = useSelector((store: RootState) => store.questionNum)
   const [over, setOver] = useState(false)
   const [[min, sec], setTime] = useState([parseInt(optionsFromRedux['quiz_time']), 0])
   const navigate = useNavigate()
