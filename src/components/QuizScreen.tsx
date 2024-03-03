@@ -5,7 +5,7 @@ import { QuestionBlock } from './QuestionBlock'
 import { QuizTimerAndCurrentQuestion } from './TimerAndCurrenQuestion'
 import { ModalWindow } from './ModalWindow'
 import { createPortal } from 'react-dom'
-import { addTimeSpentForQuiz } from './redux/timeSpentForQuiz/timeSpentForQuiz'
+import { addTimeSpentForQuiz } from './redux/timeSpentForQuiz/TimeSpentForQuiz'
 import { motion } from 'framer-motion'
 
 export const QuizScreen = () => {

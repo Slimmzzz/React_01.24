@@ -5,19 +5,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import { resetQuestionsNum } from './redux/questionNumReducer/questionNumReducer'
 import { resetOptions } from './redux/optionsReducer/optionsReducer'
 import { resetCorrectSlice } from './redux/correctAnswersReducer/correctAnswersSlice'
-import { resetTimeSpent } from './redux/timeSpentForQuiz/timeSpentForQuiz'
+import { resetTimeSpent } from './redux/timeSpentForQuiz/TimeSpentForQuiz'
 import { addTimeSpentToStatistics } from './redux/StatisticsReducer/StatisticsSlice'
 import { useGetQuestionFromInputQuery } from './redux/QuestionsApi'
 import { motion } from 'framer-motion'
+import { RootState } from '../Types/Types'
 
 export const ResultsScreen = () => {
   const navigate = useNavigate()
-  const optionsFromRedux = useSelector((store) => store.quizOptions)
+  const optionsFromRedux = useSelector((store: RootState) => store.quizOptions)
   const { refetch } = useGetQuestionFromInputQuery(optionsFromRedux)
   const correctAnswersAmountFromRedux = useSelector(
-    (state) => state.correctAnswersAmount.correctAnswersAmount
+    (state: RootState) => state.correctAnswersAmount.correctAnswersAmount
   )
-  const timeSpentFromRedux = useSelector((state) => state.timeSpentForQuiz)
+  const timeSpentFromRedux = useSelector((state: RootState) => state.timeSpentForQuiz)
   const dispatch = useDispatch()
 
   return (

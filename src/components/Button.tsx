@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
+import { ButtonsProps } from '../Types/Types'
 
-export const Button = ({ onPush, children }) => (
+export const Button = ({ onPush, children }: ButtonsProps) => (
   <motion.button
     className="button"
     onClick={onPush}
