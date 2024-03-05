@@ -9,7 +9,7 @@ describe('Utils tests', () => {
 
   test('Test argument is not an array', () => {
     const argument = 'a';
-    // @ts-ignore
+    // @ts-expect-error/ban-ts-comment
     expect(() => shuffle(argument)).toThrow(new Error('An argument should be an array'))
   })
 })
