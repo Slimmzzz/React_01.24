@@ -12,6 +12,7 @@ import {
 import { decode } from 'html-entities'
 import React from 'react'
 import { RootState } from '../Types/Types'
+import { shuffle } from './Utilities/arrayShuffle'
 
 export const QuestionBlock = () => {
   const questionNumFromRedux = useSelector((store: RootState) => store.questionNum.value)
@@ -26,11 +27,8 @@ export const QuestionBlock = () => {
     data.results[questionNumFromRedux]['correct_answer'],
     ...data.results[questionNumFromRedux]['incorrect_answers']
   ]
-  shuffle(answersArr)
 
-  function shuffle(arr: string[]): string[] {
-    return arr.sort(() => Math.random() - 0.5)
-  }
+  shuffle(answersArr)
 
   const handleAnswersBtnsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement
